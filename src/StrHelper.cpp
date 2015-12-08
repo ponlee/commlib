@@ -157,7 +157,7 @@ int32_t CStrHelper::SplitStrToVecInt( const std::string &in_str, std::vector<int
 {
 	out_vec.clear();
 	if (0 == in_str.size()){
-		return;
+		return -1;
 	}
 	size_t iStart = 0, iEnd = 0;
 	while (iStart < in_str.size()){

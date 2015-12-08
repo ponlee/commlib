@@ -1,7 +1,6 @@
 #include <arpa/inet.h>
 #include <netinet/in.h>
 #include <sys/types.h>
-#include <stropts.h>
 #include <netdb.h>
 #include <sys/ioctl.h>
 #include <net/if.h>

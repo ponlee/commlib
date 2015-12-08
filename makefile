@@ -8,9 +8,9 @@ AR=ar -rc
 
 CFLAGS = -g -Wall -fPIC -Wno-deprecated -Wno-non-template-friend
 
-INC = -I./ -I../src/ -I../ThirdParty/
+INC = -I./ -I./src/ -I./ThirdParty/
 LIB = -L./
-SRC_DIR=../src/
+SRC_DIR=./src/
 
 SUBSRC=$(wildcard ./src/*.cpp)
 SUBOBJ=$(patsubst %.cpp, %.o, $(SUBSRC))
@@ -24,6 +24,11 @@ $(LIB_OBJ):$(SUBOBJ)
 	rm -f $@
 	$(AR)  $(LIB_OBJ) $^ $(OBJS)
 	mv $(LIB_OBJ) ./lib/
+
+$(BIN_OBJ):$(SUBOBJ)
+	rm -f $@
+	g++  -shared  $(CFLAGS) -o $(BIN_OBJ) $^
+	mv $(BIN_OBJ) ./lib/
 
 %.o: %.cpp
 	g++ $(CFLAGS) $(INC) -c -o $@ $<
